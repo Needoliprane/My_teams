@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** NWP_myteams_2019
+** 4634731-6917058a9f6437092531794fa022aed8069e4aea
 ** File description:
 ** client
 */
@@ -8,35 +8,25 @@
 #ifndef CLIENT_H_
 #define CLIENT_H_
 
-#include <stdbool.h>
-#include <sys/socket.h>
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <ctype.h>
-#include <sys/stat.h>
+#include <sys/select.h>
+#include <netinet/in.h>
+#include <stdlib.h>
 #include <string.h>
 #include <arpa/inet.h>
-#include <errno.h>
-#include <stdlib.h>
 
-typedef struct sockaddr_in sockaddr_in_t;
+#include "peer.h"
+#include "signal_client.h"
 
-typedef struct client_user_s {
-    char *user;
-    int socket;
-} client_user_t;
+int handle_received_message(message_t *message);
+int handle_read_from_stdin(peer_t *server, char *client_name);
+int validate_ip(char *ip);
+int master(char **av);
+int build_fd_sets(peer_t *server, fd_set *read_fds, fd_set *write_fds, fd_set *except_fds);
 
-int master(char **info);
-int shell(char const **tab, int (* const command_action[])(client_user_t *, char *, int), client_user_t *data);
-
-// Lib
-char **my_str_to_word_array_script(char const *str);
-char *get_next_line(int fd);
-void free_tab(void **tab);
-
-// Command
-int help(client_user_t *user, char *check, int sock);
-int login(client_user_t *user, char *check, int sock);
-int logout(client_user_t *user, char *check, int sock);
+extern peer_t server;
 
 #endif /* !CLIENT_H_ */

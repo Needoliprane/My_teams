@@ -9,19 +9,28 @@ NAME	=	myteams_cli
 
 NAME2	=	myteams_server
 
-SRC	=	srcclient/main.c						\
-		srcclient/get_next_line.c				\
-		srcclient/master.c						\
-		srcclient/shell.c						\
-		srcclient/command_user.c				\
-		srcclient/help.c						\
-		srcclient/my_str_to_word_array_shell.c	\
-		common/packet.c							\
+SRC_LIB =	lib/gnl.c		\
+			lib/message.c	\
+			lib/peer.c		\
+			lib/queue.c		\
 
-SRC2 =	srcserveur/main.c			\
-		common/packet.c				\
+SRC	=	source_client/client.c			\
+		source_client/ip_check.c		\
+		source_client/main.c			\
+		source_client/read.c			\
+		source_client/recive.c			\
+		source_client/signal.c			\
+
+SRC2 =	source_server/handle_connection.c	\
+		source_server/main.c				\
+		source_server/read.c				\
+		source_server/recive.c				\
+		source_server/server.c				\
+		source_server/signal.c				\
 
 OBJ	=	$(SRC:.c=.o)
+
+OBJ_LIB	=	$(SRC_LIB:.c=.o)
 
 OBJ2	=	$(SRC2:.c=.o)
 
@@ -33,14 +42,14 @@ RM	=	rm -f
 
 all:	nm	objdump
 
-nm:	$(OBJ)
-	$(CC) -g3 $(OBJ) -o $(NAME)
+nm:	$(OBJ) $(OBJ_LIB)
+	$(CC) -g3 $(OBJ) $(OBJ_LIB) -o $(NAME)
 
-objdump:	$(OBJ2)
-	$(CC) -g3 $(OBJ2) -o $(NAME2)
+objdump:	$(OBJ2) $(OBJ_LIB)
+	$(CC) -g3 $(OBJ2) $(OBJ_LIB) -o $(NAME2)
 
 clean:
-	$(RM) $(OBJ) $(OBJ2)
+	$(RM) $(OBJ) $(OBJ2) $(OBJ_LIB)
 
 fclean: clean
 	$(RM) $(NAME) $(NAME2)
