@@ -38,7 +38,7 @@ int peer_add_to_send(peer_t *peer, message_t *message)
     return enqueue(&peer->send_buffer, message);
 }
 
-int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *))
+int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *, peer_t *))
 {
     size_t len_to_receive;
     ssize_t received_count;
@@ -46,7 +46,7 @@ int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *))
 
     do {
         if (peer->current_receiving_byte >= sizeof(peer->receiving_buffer)) {
-            message_handler(&peer->receiving_buffer);
+            message_handler(&peer->receiving_buffer, peer);
             peer->current_receiving_byte = 0;
         }
       len_to_receive = sizeof(peer->receiving_buffer) - peer->current_receiving_byte;

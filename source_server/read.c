@@ -27,3 +27,20 @@ int handle_read_from_stdin()
     }
     return 0;
 }
+
+int send_fast(char *data)
+{
+    message_t new_message = {0};
+
+    prepare_message(SERVER_NAME, data, &new_message);
+    for (int i = 0; i < MAX_CLIENTS; ++i) {
+        if (connection_list[i].socket != NO_SOCKET) {
+            if (peer_add_to_send(&connection_list[i], &new_message) != 0) {
+                printf("Send buffer was overflowed, we lost this message!\n");
+                continue;
+            }
+            printf("New message to send was enqueued right now.\n");
+        }
+    }
+    return (0);
+}

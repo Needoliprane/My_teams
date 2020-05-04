@@ -7,7 +7,7 @@
 
 #include "peer.h"
 
-int handle_received_message(message_t *message)
+int handle_received_message(message_t *message, peer_t *peer)
 {
   printf("Received message from server.\n");
   print_message(message);

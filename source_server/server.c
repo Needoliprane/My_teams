@@ -76,10 +76,7 @@ int master()
                 if (FD_ISSET(listen_sock, &read_fds)) {
                     handle_new_connection();
                 }
-                if (FD_ISSET(STDIN_FILENO, &except_fds)) {
-                    shutdown_properly(EXIT_FAILURE);
-                }
-                if (FD_ISSET(listen_sock, &except_fds)) {
+                if (FD_ISSET(STDIN_FILENO, &except_fds) || FD_ISSET(listen_sock, &except_fds)) {
                     shutdown_properly(EXIT_FAILURE);
                 }
                 for (int i = 0; i < MAX_CLIENTS; ++i) {
@@ -101,8 +98,7 @@ int master()
                     }
                 }
                 break;
-            }
-        printf("And we are still waiting for clients' or stdin activity. You can type something to send:\n");
+        }
     }
     return 0;
 }

@@ -35,6 +35,7 @@ typedef struct {
     size_t current_sending_byte;
     message_t receiving_buffer;
     size_t current_receiving_byte;
+    char *username;
 } peer_t;
 
 int read_from_stdin(char *read_buffer, size_t max_len);
@@ -42,7 +43,7 @@ int delete_peer(peer_t *peer);
 int create_peer(peer_t *peer);
 char *peer_get_addres_str(peer_t *peer);
 int peer_add_to_send(peer_t *peer, message_t *message);
-int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *));
+int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *, peer_t *));
 int send_to_peer(peer_t *peer);
 
 #endif /* !PEER_H_ */

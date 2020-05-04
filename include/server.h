@@ -28,9 +28,18 @@ extern peer_t connection_list[MAX_CLIENTS];
 extern int listen_sock;
 
 int handle_read_from_stdin();
-int handle_received_message(message_t *message);
+int handle_received_message(message_t *message, peer_t *peer);
 int handle_new_connection();
 int close_client_connection(peer_t *client);
 int master();
+char **my_str_to_word_array_script(char const *str);
+char *my_strcat(char *buf, char *tmp);
+int send_fast(char *data);
+
+/* Command */
+int help(peer_t *peer, char **data);
+int login(peer_t *peer, char **data);
+int users(peer_t *peer, char **data);
+int send_command(peer_t *peer, char **data);
 
 #endif /* !SERVER_H_ */
