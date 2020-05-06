@@ -7,6 +7,7 @@
 
 #include <ctype.h>
 #include "client.h"
+#include "sig_handle.h"
 
 static int print_help(int ac)
 {

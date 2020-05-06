@@ -35,8 +35,8 @@ int dequeue(message_queue_t *queue, message_t *message)
 {
     if (queue->current == 0)
         return -1;
-    memcpy(message, &queue->data[queue->current - 1], sizeof(message_t));
     queue->current--;
+    memcpy(message, &queue->data[queue->current], sizeof(message_t));
     return 0;
 }
 

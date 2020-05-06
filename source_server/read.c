@@ -18,11 +18,8 @@ int handle_read_from_stdin()
     print_message(&new_message);
     for (int i = 0; i < MAX_CLIENTS; ++i) {
         if (connection_list[i].socket != NO_SOCKET) {
-            if (peer_add_to_send(&connection_list[i], &new_message) != 0) {
-                printf("Send buffer was overflowed, we lost this message!\n");
+            if (peer_add_to_send(&connection_list[i], &new_message) != 0)
                 continue;
-            }
-            printf("New message to send was enqueued right now.\n");
         }
     }
     return 0;

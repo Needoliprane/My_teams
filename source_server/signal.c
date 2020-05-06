@@ -5,9 +5,8 @@
 ** signal
 */
 
-#include "signal_server.h"
+#include "sig_handle.h"
 #include "server.h"
-#include "peer.h"
 
 void handle_signal_action(int sig_number)
 {

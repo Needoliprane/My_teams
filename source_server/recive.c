@@ -30,6 +30,7 @@ int login(peer_t *peer, char **data)
 
 int error(peer_t *peer, char **data)
 {
+    printf("Error");
     send_fast("Error");
     return 0;
 }
@@ -37,12 +38,15 @@ int error(peer_t *peer, char **data)
 int users(peer_t *peer, char **data)
 {
     char *tmp = "";
+
     if (peer->username == NULL) {
         return (84);
     }
     for(int i = 0; i < MAX_CLIENTS; i++) {
-        tmp = my_strcat(connection_list[i].username, tmp);
-        tmp = my_strcat(tmp, " ; ");
+        if (connection_list[i].username != NULL) {
+            tmp = my_strcat(connection_list[i].username, tmp);
+            tmp = my_strcat(tmp, " ; ");
+        }
     }
     send_fast(my_strcat("ok ! ", tmp));
     return (0);
@@ -72,7 +76,8 @@ int handle_received_message(message_t *message, peer_t *peer)
         printf("%s\n", data[i]);
     }
     for (int i = 0; tab[i]; i++) {
-        if (strcmp(data[0], tab[i]) == 0) {
+        printf("%s - %s\n", data[0], tab[i]);
+        if (strncmp(data[0], tab[i], strlen(tab[i])) == 0) {
             control = command[i](peer, data);
             break;
         }

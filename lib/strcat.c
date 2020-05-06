@@ -5,6 +5,7 @@
 ** strcat
 */
 
+#include <string.h>
 #include <stdlib.h>
 
 char *my_strcat(char *buf, char *tmp)

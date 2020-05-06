@@ -5,7 +5,7 @@
 ** server
 */
 
-#include "signal_server.h"
+#include "sig_handle.h"
 #include "server.h"
 
 int listen_sock = 0;

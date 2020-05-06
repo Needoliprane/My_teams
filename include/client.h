@@ -19,7 +19,7 @@
 #include <arpa/inet.h>
 
 #include "peer.h"
-#include "signal_client.h"
+#include "signal.h"
 
 int handle_received_message(message_t *message, peer_t *peer);
 int handle_read_from_stdin(peer_t *server, char *client_name);

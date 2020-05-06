@@ -11,10 +11,15 @@ NAME2	=	myteams_server
 
 SRC_LIB =	lib/gnl.c								\
 			lib/message.c							\
-			lib/peer.c								\
 			lib/queue.c								\
 			lib/my_str_to_word_array_shell.c		\
 			lib/strcat.c							\
+			lib/receive_peer.c						\
+			lib/send_peer.c							\
+			lib/create_peer.c						\
+			lib/delete_peer.c						\
+			lib/get_add_peer.c						\
+			lib/peer_add_to_send.c					\
 
 SRC	=	source_client/client.c			\
 		source_client/ip_check.c		\

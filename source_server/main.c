@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-#include "signal_server.h"
+#include "sig_handle.h"
 #include "server.h"
 
 static int print_help(int ret)

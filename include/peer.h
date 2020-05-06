@@ -1,5 +1,12 @@
 /*
 ** EPITECH PROJECT, 2020
+** NWP_myteams_2019
+** File description:
+** peer
+*/
+
+/*
+** EPITECH PROJECT, 2020
 ** 4634731-6917058a9f6437092531794fa022aed8069e4aea
 ** File description:
 ** peer
@@ -16,16 +23,22 @@
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <signal.h>
 #include <unistd.h>
 #include <sys/select.h>
 #include <netinet/in.h>
 #include <stdlib.h>
 #include <arpa/inet.h>
 
-
 #include "queue.h"
 #include "message.h"
+
+#define CHECK_GET_BYTE (peer->current_receiving_byte >= sizeof(peer->receiving_buffer))
+#define BUF_RECV (char *)&peer->receiving_buffer + peer->current_receiving_byte
+#define ERNO_CHECK_RECV (errno != EAGAIN || errno != EWOULDBLOCK)
+#define ERNO_CHECK_RECV2 (errno == EAGAIN || errno == EWOULDBLOCK)
+#define ERNO_SEND (errno == EAGAIN || errno == EWOULDBLOCK)
+#define ERNO_SEND_CT (errno != EAGAIN || errno != EWOULDBLOCK)
+#define SEND_BUFFER (char *)&peer->sending_buffer + peer->current_sending_byte
 
 typedef struct {
     int socket;
