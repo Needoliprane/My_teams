@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
 ** server
 */
@@ -22,7 +22,12 @@
 
 #define MAX_CLIENTS 30
 #define NO_SOCKET -1
-#define SERVER_NAME "server"
+#define CLIENT_ADD (struct sockaddr *)&client_addr
+#define CHECK_SOCKET connection_list[i].socket != NO_SOCKET
+#define CHECK_ISSET_READ FD_ISSET(connection_list[i].socket, read_fds)
+#define CALL_RECEIVE receive_from_peer(&connection_list[i], &handle_received_message) != 0
+#define CHECK_ISSET_WRITE FD_ISSET(connection_list[i].socket, write_fds)
+#define CALL_SEND send_to_peer(&connection_list[i]) != 0
 
 extern peer_t connection_list[MAX_CLIENTS];
 extern int listen_sock;
@@ -38,6 +43,7 @@ int send_fast(char *data);
 
 /* Command */
 int help(peer_t *peer, char **data);
+int error(peer_t *peer, char **data);
 int login(peer_t *peer, char **data);
 int users(peer_t *peer, char **data);
 int send_command(peer_t *peer, char **data);

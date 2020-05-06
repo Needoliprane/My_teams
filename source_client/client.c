@@ -28,6 +28,7 @@ static int for_the_norm(int value, char **av, fd_set *read_fds, fd_set *write_fd
         if (send_to_peer(&server) != 0)
             shutdown_properly(EXIT_FAILURE);
     }
+    return (0);
 }
 
 int master(char **av)

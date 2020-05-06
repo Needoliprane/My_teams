@@ -21,6 +21,12 @@ SRC_LIB =	lib/gnl.c								\
 			lib/get_add_peer.c						\
 			lib/peer_add_to_send.c					\
 
+SRC_COMMAND_SERVER	=	command_serveur/error.c		\
+						command_serveur/help.c		\
+						command_serveur/login.c		\
+						command_serveur/send.c		\
+						command_serveur/users.c		\
+
 SRC	=	source_client/client.c			\
 		source_client/ip_check.c		\
 		source_client/main.c			\
@@ -41,6 +47,8 @@ OBJ_LIB	=	$(SRC_LIB:.c=.o)
 
 OBJ2	=	$(SRC2:.c=.o)
 
+OBJ_COMMAND_SERV	=	$(SRC_COMMAND_SERVER:.c=.o)
+
 CPPFLAGS=	-I./include
 
 CC	=	gcc -Wall -Wextra -g3
@@ -49,14 +57,14 @@ RM	=	rm -f
 
 all:	nm	objdump
 
-nm:	$(OBJ) $(OBJ_LIB)
+nm:	$(OBJ) $(OBJ_LIB) 
 	$(CC) -g3 $(OBJ) $(OBJ_LIB) -o $(NAME)
 
-objdump:	$(OBJ2) $(OBJ_LIB)
-	$(CC) -g3 $(OBJ2) $(OBJ_LIB) -o $(NAME2)
+objdump:	$(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV)
+	$(CC) -g3 $(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV) -o $(NAME2)
 
 clean:
-	$(RM) $(OBJ) $(OBJ2) $(OBJ_LIB)
+	$(RM) $(OBJ) $(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV)
 
 fclean: clean
 	$(RM) $(NAME) $(NAME2)
