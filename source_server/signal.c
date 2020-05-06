@@ -10,14 +10,10 @@
 
 void handle_signal_action(int sig_number)
 {
-    if (sig_number == SIGINT) {
-        printf("SIGINT was catched!\n");
+    if (sig_number == SIGINT)
         shutdown_properly(EXIT_SUCCESS);
-    }
-    else if (sig_number == SIGPIPE) {
-        printf("SIGPIPE was catched!\n");
+    else if (sig_number == SIGPIPE)
         shutdown_properly(EXIT_SUCCESS);
-    }
 }
 
 int setup_signals()
@@ -25,12 +21,10 @@ int setup_signals()
     struct sigaction sa;
 
     sa.sa_handler = handle_signal_action;
-    if (sigaction(SIGINT, &sa, 0) != 0) {
+    if (sigaction(SIGINT, &sa, 0) != 0)
         return -1;
-    }
-    if (sigaction(SIGPIPE, &sa, 0) != 0) {
+    if (sigaction(SIGPIPE, &sa, 0) != 0)
         return -1;
-    }
     return 0;
 }
 

@@ -11,56 +11,6 @@
 char const *tab[] = {"help","login", "users", "user", "send","messages","subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
 int (* const command[])(peer_t *, char **data) = {help, login, users, help, send_command, help, help, help, help, help, help, help, help, NULL};
 
-int help(peer_t *peer, char **data)
-{
-    send_fast("ok !");
-    return 0;
-}
-
-int login(peer_t *peer, char **data)
-{
-    printf("here\n");
-    if (data && data[1] != NULL) {
-        peer->username = strdup(data[1]);
-        send_fast("ok !");
-        return 0;
-    }
-    return 84;
-}
-
-int error(peer_t *peer, char **data)
-{
-    printf("Error");
-    send_fast("Error");
-    return 0;
-}
-
-int users(peer_t *peer, char **data)
-{
-    char *tmp = "";
-
-    if (peer->username == NULL) {
-        return (84);
-    }
-    for(int i = 0; i < MAX_CLIENTS; i++) {
-        if (connection_list[i].username != NULL) {
-            tmp = my_strcat(connection_list[i].username, tmp);
-            tmp = my_strcat(tmp, " ; ");
-        }
-    }
-    send_fast(my_strcat("ok ! ", tmp));
-    return (0);
-}
-
-int send_command(peer_t *peer, char **data)
-{
-    if (peer->username == NULL) {
-        return (84);
-    }
-    send_fast(my_strcat(my_strcat("ok ! ; ", data[1]), my_strcat(" ; ", data[2])));
-    return (0);
-}
-
 int handle_received_message(message_t *message, peer_t *peer)
 {
     char **data = NULL;

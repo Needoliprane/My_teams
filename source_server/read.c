@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
 ** read
 */
@@ -14,7 +14,7 @@ int handle_read_from_stdin()
 
     if (read_from_stdin(read_buffer, DATA_MAXSIZE) != 0)
         return -1;
-    prepare_message(SERVER_NAME, read_buffer, &new_message);
+    prepare_message("Server", read_buffer, &new_message);
     print_message(&new_message);
     for (int i = 0; i < MAX_CLIENTS; ++i) {
         if (connection_list[i].socket != NO_SOCKET) {
@@ -29,7 +29,7 @@ int send_fast(char *data)
 {
     message_t new_message = {0};
 
-    prepare_message(SERVER_NAME, data, &new_message);
+    prepare_message("Server", data, &new_message);
     for (int i = 0; i < MAX_CLIENTS; ++i) {
         if (connection_list[i].socket != NO_SOCKET) {
             if (peer_add_to_send(&connection_list[i], &new_message) != 0) {
