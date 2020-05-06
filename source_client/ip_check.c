@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
 ** ip_check
 */
@@ -14,11 +14,11 @@ int validate_number(char *str)
 {
     while (*str) {
         if (!isdigit(*str)){
-            return 0;
+            return (0);
         }
         str++;
    }
-   return 1;
+   return (1);
 }
 
 int validate_ip(char *ip)
@@ -43,6 +43,5 @@ int validate_ip(char *ip)
     }
     if (dots != 3)
        return 84;
-    free(ip);
     return 0;
 }

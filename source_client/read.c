@@ -9,7 +9,7 @@
 
 int handle_read_from_stdin(peer_t *server, char *client_name)
 {
-    char read_buffer[DATA_MAXSIZE]; // buffer for stdin
+    char read_buffer[DATA_MAXSIZE];
     message_t new_message;
 
     if (read_from_stdin(read_buffer, DATA_MAXSIZE) != 0)

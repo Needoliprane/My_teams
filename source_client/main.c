@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
 ** main
 */
@@ -42,21 +42,21 @@ static int connect_server(peer_t *server, char **av)
     server_addr.sin_addr.s_addr = inet_addr(av[1]);
     server_addr.sin_port = htons(atoi(av[2]));
     server->addres = server_addr;
-    if (connect(server->socket, (struct sockaddr *)&server_addr, sizeof(struct sockaddr)) != 0) {
+    if (connect(server->socket, SERV_D, SIZE_SERV_DATA) != 0) {
         return -1;
     }
     printf("Connected to %s:%s.\n", av[1], av[2]);
     return 0;
 }
 
-int build_fd_sets(peer_t *server, fd_set *read_fds, fd_set *write_fds, fd_set *except_fds)
+int build_fd_sets(peer_t *server, fd_set *read_fds, fd_set *write_fds,
+                                                    fd_set *except_fds)
 {
     FD_ZERO(read_fds);
     FD_SET(STDIN_FILENO, read_fds);
     FD_SET(server->socket, read_fds);
     FD_ZERO(write_fds);
-    if (server->send_buffer.current > 0)
-        FD_SET(server->socket, write_fds);
+    (SET_SOCKET) ? FD_SET(server->socket, write_fds) : 0;
     FD_ZERO(except_fds);
     FD_SET(STDIN_FILENO, except_fds);
     FD_SET(server->socket, except_fds);

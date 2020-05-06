@@ -21,6 +21,10 @@
 #include "peer.h"
 #include "signal.h"
 
+#define SERV_D (struct sockaddr *)&server_addr
+#define SIZE_SERV_DATA sizeof(struct sockaddr)
+#define SET_SOCKET server->send_buffer.current > 0
+
 int handle_received_message(message_t *message, peer_t *peer);
 int handle_read_from_stdin(peer_t *server, char *client_name);
 int validate_ip(char *ip);
