@@ -9,37 +9,43 @@ NAME	=	myteams_cli
 
 NAME2	=	myteams_server
 
-SRC_LIB =	lib/gnl.c								\
-			lib/message.c							\
-			lib/queue.c								\
-			lib/my_str_to_word_array_shell.c		\
-			lib/strcat.c							\
-			lib/receive_peer.c						\
-			lib/send_peer.c							\
-			lib/create_peer.c						\
-			lib/delete_peer.c						\
-			lib/get_add_peer.c						\
-			lib/peer_add_to_send.c					\
+SRC_LIB =	lib/gnl.c									\
+			lib/message.c								\
+			lib/queue.c									\
+			lib/my_str_to_word_array_shell.c			\
+			lib/strcat.c								\
+			lib/receive_peer.c							\
+			lib/send_peer.c								\
+			lib/create_peer.c							\
+			lib/delete_peer.c							\
+			lib/get_add_peer.c							\
+			lib/peer_add_to_send.c						\
 
-SRC_COMMAND_SERVER	=	command_serveur/error.c		\
-						command_serveur/help.c		\
-						command_serveur/login.c		\
-						command_serveur/send.c		\
-						command_serveur/users.c		\
+SRC_COMMAND_SERVER	=	command_serveur/error.c			\
+						command_serveur/help.c			\
+						command_serveur/login.c			\
+						command_serveur/send.c			\
+						command_serveur/users.c			\
+						command_serveur/user.c			\
+						command_serveur/messages.c		\
+						command_serveur/create.c		\
+						command_serveur/list.c			\
+						command_serveur/use.c			\
+						
 
-SRC	=	source_client/client.c			\
-		source_client/ip_check.c		\
-		source_client/main.c			\
-		source_client/read.c			\
-		source_client/recive.c			\
-		source_client/signal.c			\
+SRC	=	source_client/client.c							\
+		source_client/ip_check.c						\
+		source_client/main.c							\
+		source_client/read.c							\
+		source_client/recive.c							\
+		source_client/signal.c							\
 
-SRC2 =	source_server/handle_connection.c	\
-		source_server/main.c				\
-		source_server/read.c				\
-		source_server/recive.c				\
-		source_server/server.c				\
-		source_server/signal.c				\
+SRC2 =	source_server/handle_connection.c				\
+		source_server/main.c							\
+		source_server/read.c							\
+		source_server/recive.c							\
+		source_server/server.c							\
+		source_server/signal.c							\
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -51,7 +57,7 @@ OBJ_COMMAND_SERV	=	$(SRC_COMMAND_SERVER:.c=.o)
 
 CPPFLAGS=	-I./include
 
-CC	=	gcc -Wall -Wextra -g3
+CC	=	gcc -Wall -Wextra -g3 -Wno-unused-parameter
 
 RM	=	rm -f
 

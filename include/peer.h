@@ -28,6 +28,7 @@
 #include <netinet/in.h>
 #include <stdlib.h>
 #include <arpa/inet.h>
+#include <stdbool.h>
 
 #include "queue.h"
 #include "message.h"
@@ -49,6 +50,14 @@ typedef struct {
     message_t receiving_buffer;
     size_t current_receiving_byte;
     char *username;
+    char *message;
+    char *team;
+    char *channel;
+    char *channel_description;
+    char *thread;
+    char *list_user;
+    char *team_description;
+    bool use;
 } peer_t;
 
 int read_from_stdin(char *read_buffer, size_t max_len);

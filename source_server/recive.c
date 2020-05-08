@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
 ** recive
 */
@@ -8,8 +8,8 @@
 #include "peer.h"
 #include "server.h"
 
-char const *tab[] = {"help","login", "users", "user", "send","messages","subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
-int (* const command[])(peer_t *, char **data) = {help, login, users, help, send_command, help, help, help, help, help, help, help, help, NULL};
+char const *tab[] = {"help","login", "users", "user", "send", "messages", "subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
+int (* const command[])(peer_t *, char **data) = {help, login, users, user, send_command, help, help, help, help, use, create, help, help, NULL};
 
 int handle_received_message(message_t *message, peer_t *peer)
 {
