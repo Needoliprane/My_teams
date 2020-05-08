@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
-** signal
+** sig_handle
 */
 
 #ifndef SIGNAL_H_

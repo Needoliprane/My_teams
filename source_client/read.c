@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
+** NWP_myteams_2019
 ** File description:
 ** read
 */
@@ -19,6 +19,5 @@ int handle_read_from_stdin(peer_t *server, char *client_name)
     if (peer_add_to_send(server, &new_message) != 0) {
         return 0;
     }
-    printf("New message to send was enqueued right now.\n");
     return 0;
 }
