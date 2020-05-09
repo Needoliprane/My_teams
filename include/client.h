@@ -42,6 +42,7 @@ int validate_ip(char *ip);
 int master(char **av);
 int build_fd_sets(peer_t *server, fd_set *read_fds, fd_set *write_fds, fd_set *except_fds);
 char **my_str_to_word_array_script(char const *str);
+char *my_strcat(char *buf, char *tmp);
 
 extern peer_t server;
 

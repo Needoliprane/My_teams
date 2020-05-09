@@ -8,7 +8,7 @@
 #include "peer.h"
 #include "server.h"
 
-char const *tab[] = {"help","login", "users", "user", "send", "messages", "subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
+char const *tabu[] = {"help","login", "users", "user", "send", "messages", "subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
 int (* const command[])(peer_t *, char **data) = {help, login, users, user, send_command, help, help, help, help, use, create, help, help, NULL};
 
 int handle_received_message(message_t *message, peer_t *peer)
@@ -25,9 +25,9 @@ int handle_received_message(message_t *message, peer_t *peer)
     for (int i =0; data[i]; i++) {
         printf("%s\n", data[i]);
     }
-    for (int i = 0; tab[i]; i++) {
-        printf("%s - %s\n", data[0], tab[i]);
-        if (strncmp(data[0], tab[i], strlen(tab[i])) == 0) {
+    for (int i = 0; tabu[i]; i++) {
+        printf("%s - %s\n", data[0], tabu[i]);
+        if (strncmp(data[0], tabu[i], strlen(tabu[i])) == 0) {
             control = command[i](peer, data);
             break;
         }

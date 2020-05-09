@@ -8,8 +8,6 @@
 #include "sig_handle.h"
 #include "client.h"
 
-char const *tab[] = {"/help","/login", "/logout", "/users", "/user", "/send", "/messages", "/subscribe","/subscribed","/unsubscribe" ,"/use" ,"/create" ,"/list","/info", NULL};
-
 int is_logout(message_t *message)
 {
     if (strncmp(message->data, "/logout", strlen("/logout")) == 0) {
@@ -56,23 +54,23 @@ char *dump_command()
 
 int handle_read_from_stdin(peer_t *server, char *client_name)
 {
-    char read_buffer[DATA_MAXSIZE];
+    char read_buffer[DATA_MAXSIZE] = {0};
     char *msg = NULL;
     message_t nw_msg;
 
     if (read_from_stdin(read_buffer, DATA_MAXSIZE) != 0)
         return -1;
-    if (update_client(read_buffer) == 1)
+    if (validate_message_client(&nw_msg) == 84) {
+        printf("Error invalid syntax or invalid command\n");
+        return (0);
+    }
+    if (update_client(strdup(read_buffer)) == 1)
         msg = my_strcat(read_buffer, dump_command());
     else
         msg = strdup(read_buffer);
     prepare_message(client_name, msg, &nw_msg);
     print_message(&nw_msg);
     is_logout(&nw_msg);
-    if (validate_message_client(&nw_msg) == 84) {
-        printf("Error invalid syntax or invalid command\n");
-        return (0);
-    }
     if (peer_add_to_send(server, &nw_msg) != 0) {
         return 0;
     }
