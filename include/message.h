@@ -28,5 +28,6 @@ typedef struct {
 
 int prepare_message(char *sender, char *data, message_t *message);
 int print_message(message_t *message);
+int validate_message_client(message_t *message);
 
 #endif /* !MESSAGE_H_ */

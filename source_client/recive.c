@@ -5,6 +5,7 @@
 ** recive
 */
 
+#include "client.h"
 #include "peer.h"
 
 int handle_received_message(message_t *message, peer_t *peer)

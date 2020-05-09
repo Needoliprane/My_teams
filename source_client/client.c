@@ -10,6 +10,7 @@
 #include "client.h"
 
 peer_t server = {0};
+client_command_t command = {0};
 
 static int for_the_norm(int value, char **av, fd_set *read_fds, fd_set *write_fds, fd_set *except_fds)
 {
