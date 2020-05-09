@@ -27,7 +27,7 @@ int validate_message_client(message_t *message)
     if (message->data == NULL) {
         return (84);
     }
-    printf("%s\n", message->data);
+    printf("validate %s\n", message->data);
     if (message->data[0] != '/')
         return (84);
     printf("here\n");

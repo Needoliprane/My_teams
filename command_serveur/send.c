@@ -17,6 +17,9 @@ int send_command(peer_t *peer, char **data)
     }
     (CHECK_SIZE) ? index++ : 0;
     send_fast(my_strcat(my_strcat("ok ! ; ", data[1]), my_strcat(" ; ", data[index])));
-    peer->message = my_strcat(peer->message, data[index]);
+    if (peer->message == NULL)
+        peer->message = strdup(data[index]);
+    else
+        peer->message = my_strcat(peer->message, my_strcat(" ; ", data[index]));
     return (0);
 }
