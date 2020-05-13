@@ -21,13 +21,15 @@
 #include "peer.h"
 #include "signal.h"
 
+#include "../libs/myteams/logging_client.h"
+
 typedef struct client_command_s {
     char *username;
     char *team_name;
     char *channel_name;
     char *thread_name;
     char *last_command;
-}client_command_t;
+} client_command_t;
 
 extern client_command_t command;
 

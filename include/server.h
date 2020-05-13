@@ -18,7 +18,9 @@
 #include <fcntl.h>
 #include <netinet/in.h>
 #include <unistd.h>
+
 #include "peer.h"
+#include "../libs/myteams/logging_server.h"
 
 #define MAX_CLIENTS 30
 #define NO_SOCKET -1
