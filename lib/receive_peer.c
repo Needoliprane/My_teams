@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "peer.h"
 
-int receive_from_peer(peer_t *peer, int(*message_handler)(message_t*, peer_t*))
+int receive_from_peer(peer_t *peer, int(*message_handler)(message_t *, peer_t *))
 {
     size_t len;
     ssize_t count_get;

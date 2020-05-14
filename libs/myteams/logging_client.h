@@ -15,7 +15,7 @@
 /*!
     \param user_id a character pointer corresponding to the universally unique id assigned to the currently logged in user
     \param user_name a character pointer corresponding to the user name.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_event_loggedin(char const *user_id, const char *user_name);
 
@@ -41,7 +41,7 @@ int client_event_private_message_received(char const *user_id, char const *messa
     \param thread_id a character pointer corresponding to the universally unique id assigned to the thread hosting the reply.
     \param user_id a character pointer corresponding to the universally unique id assigned to the user who sended the message.
     \param message a character pointer corresponding to the message.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_event_thread_message_received(char const *team_id, char const *thread_id, char const *user_id, char const *message);
 
@@ -80,7 +80,7 @@ int client_event_thread_created(char const *thread_id, char const *user_id, time
     \param user_id a character pointer corresponding to the universally unique id assigned to the user.
     \param user_name a character pointer corresponding to the user's name.
     \param user_status an integer corresponding to the user status (0 = not connected; 1 = connected).
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_print_users(char const *user_id, char const *user_name, int user_status);
 
@@ -89,7 +89,7 @@ int client_print_users(char const *user_id, char const *user_name, int user_stat
     \param team_id a character pointer corresponding to the universally unique id assigned to the team.
     \param team_name a character pointer corresponding to the team's name.
     \param team_description a character pointer corresponding to the team's description.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_print_teams(char const *team_id, char const *team_name, char const *team_description);
 
@@ -99,7 +99,7 @@ int client_print_teams(char const *team_id, char const *team_name, char const *t
     \param channel_id a character pointer corresponding to the universally unique id assigned to the channel in the team.
     \param channel_name a character pointer corresponding to the channel's name.
     \param channel_description a character pointer corresponding to the channel's description.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_team_print_channels(char const *channel_id, char const *channel_name, char const *channel_description);
 
@@ -110,7 +110,7 @@ int client_team_print_channels(char const *channel_id, char const *channel_name,
     \param thread_timestamp an unsigned integer corresponding to the timestamp of the thread's creation.
     \param thread_title a character pointer corresponding to the thread title.
     \param thread_body a character pointer corresponding to the thread body.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_channel_print_threads(char const *thread_id, char const *user_id, time_t thread_timestamp, char const *thread_title, char const *thread_body);
 
@@ -120,7 +120,7 @@ int client_channel_print_threads(char const *thread_id, char const *user_id, tim
     \param user_id a character pointer corresponding to the universally unique id assigned to the user who created the thread.
     \param reply_timestamp an unsigned integer corresponding to the timestamp of the reply.
     \param reply_body a character pointer corresponding to the reply.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_thread_print_replies(char const *thread_id, char const *user_id, time_t reply_timestamp, char const *reply_body);
 
@@ -129,35 +129,35 @@ int client_thread_print_replies(char const *thread_id, char const *user_id, time
     \param sender_id a character pointer corresponding to the universally unique id assigned to the user sending the message
     \param timestamp an unsigned integer corresponding to the timestamp of the message.
     \param message a character pointer corresponding to the message.
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_private_message_print_messages(char const *sender_id, time_t timestamp, char const *message);
 
 //! Handler called when the user ask for an unknown specific team
 /*!
     \param team_id an unsigned integer corresponding to the WRONG team identifier 
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_error_unknown_team(char const *team_id);
 
 //! Handler called when the user ask for an unknown specific channel
 /*!
     \param channel_id an unsigned integer corresponding to the WRONG channel identifier 
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_error_unknown_channel(char const *channel_id);
 
 //! Handler called when the user ask for an unknown specific thread
 /*!
     \param thread_id an unsigned integer corresponding to the WRONG thread identifier 
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_error_unknown_thread(char const *thread_id);
 
 //! Handler called when the user want to chat with an unknown user (/messages and /send CLI command)
 /*!
     \param user_id an unsigned integer corresponding to the WRONG user identifier 
-    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately 
+    \return On success, 1 is returned. On error, -1 is returned and errno is set appropriately
 */
 int client_error_unknown_user(char const *user_id);
 

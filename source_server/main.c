@@ -38,12 +38,14 @@ int start_listen_socket(int *listen_sock, int port)
     *listen_sock = socket(AF_INET, SOCK_STREAM, 0);
     if (*listen_sock < 0)
         return -1;
-    if (setsockopt(*listen_sock, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse)) != 0)
+    if (setsockopt(*listen_sock, SOL_SOCKET, \
+        SO_REUSEADDR, &reuse, sizeof(reuse)) != 0)
         return -1;
     my_addr.sin_family = AF_INET;
     my_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     my_addr.sin_port = htons(port);
-    if (bind(*listen_sock, (struct sockaddr*)&my_addr, sizeof(struct sockaddr)) != 0)
+    if (bind(*listen_sock, (struct sockaddr *)&my_addr, \
+        sizeof(struct sockaddr)) != 0)
         return -1;
     if (listen(*listen_sock, 10) != 0)
         return -1;

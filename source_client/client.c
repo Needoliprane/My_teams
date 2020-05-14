@@ -12,14 +12,16 @@
 peer_t server = {0};
 client_command_t command = {0};
 
-static int for_the_norm(int value, char **av, fd_set *read_fds, fd_set *write_fds, fd_set *except_fds)
+static int for_the_norm(int value, char **av, fd_set *read_fds,
+    fd_set *write_fds, fd_set *except_fds)
 {
     if (value <= 0)
         shutdown_properly(EXIT_FAILURE);
     if (FD_ISSET(STDIN_FILENO, read_fds))
         if (handle_read_from_stdin(&server, av[1]) != 0)
             shutdown_properly(EXIT_FAILURE);
-    if (FD_ISSET(STDIN_FILENO, except_fds) || FD_ISSET(server.socket, except_fds)) {
+    if (FD_ISSET(STDIN_FILENO, except_fds) || FD_ISSET(server.socket, \
+        except_fds)) {
         shutdown_properly(EXIT_FAILURE);
     }
     if (FD_ISSET(server.socket, read_fds))
@@ -36,9 +38,10 @@ int master(char **av)
 {
     int value = 0;
 
-    for (fd_set read_fds, write_fds, except_fds;1;) {
+    for (fd_set read_fds, write_fds, except_fds; 1 ;) {
         build_fd_sets(&server, &read_fds, &write_fds, &except_fds);
-        value = select(server.socket + 1, &read_fds, &write_fds, &except_fds, NULL);
+        value = select(server.socket + 1, &read_fds, &write_fds, \
+            &except_fds, NULL);
         for_the_norm(value, av, &read_fds, &write_fds, &except_fds);
         printf("waiting for server or stdin activity. Something to send:\n");
     }

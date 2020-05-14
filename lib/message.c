@@ -7,7 +7,9 @@
 
 #include "message.h"
 
-char const *tab[] = {"/help","/login", "/logout", "/users", "/user", "/send", "/messages", "/subscribe","/subscribed","/unsubscribe" ,"/use" ,"/create" ,"/list","/info", NULL};
+char const *tab[] = {"/help", "/login", "/logout", \
+    "/users", "/user", "/send", "/messages", "/subscribe", \
+    "/subscribed", "/unsubscribe", "/use", "/create", "/list", "/info", NULL};
 
 int prepare_message(char *sender, char *data, message_t *message)
 {

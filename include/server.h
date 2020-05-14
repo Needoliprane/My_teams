@@ -27,7 +27,8 @@
 #define CLIENT_ADD (struct sockaddr *)&client_addr
 #define CHECK_SOCKET connection_list[i].socket != NO_SOCKET
 #define CHECK_ISSET_READ FD_ISSET(connection_list[i].socket, read_fds)
-#define CALL_RECEIVE receive_from_peer(&connection_list[i], &handle_received_message) != 0
+#define CALL_RECEIVE receive_from_peer(&connection_list[i], \
+                                         &handle_received_message) != 0
 #define CHECK_ISSET_WRITE FD_ISSET(connection_list[i].socket, write_fds)
 #define CALL_SEND send_to_peer(&connection_list[i]) != 0
 #define CHECK_SIZE (strlen(data[index]) < 2)

@@ -24,7 +24,8 @@ int build_fd_sets(fd_set *read_fds, fd_set *write_fds, fd_set *except_fds)
             FD_SET(connection_list[i].socket, read_fds);
     FD_ZERO(write_fds);
     for (i = 0; i < MAX_CLIENTS; ++i)
-        if (connection_list[i].socket != NO_SOCKET && connection_list[i].send_buffer.current > 0)
+        if (connection_list[i].socket != NO_SOCKET && \
+        connection_list[i].send_buffer.current > 0)
             FD_SET(connection_list[i].socket, write_fds);
     FD_ZERO(except_fds);
     FD_SET(STDIN_FILENO, except_fds);
@@ -84,7 +85,8 @@ int master()
             if (connection_list[i].socket > listen_sock)
                 listen_sock = connection_list[i].socket;
         }
-        value = select(listen_sock + 1, &read_fds, &write_fds, &except_fds, NULL);
+        value = select(listen_sock + 1, &read_fds, &write_fds, \
+        &except_fds, NULL);
         for_the_norm(value, &read_fds, &write_fds, &except_fds);
     }
     return 0;

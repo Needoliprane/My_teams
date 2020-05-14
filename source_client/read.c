@@ -43,7 +43,7 @@ int update_client(char *str)
     return (1);
 }
 
-char *dump_command()
+char *dump_command(void)
 {
     char *tmp = "";
 

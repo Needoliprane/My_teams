@@ -26,8 +26,10 @@
 #include "queue.h"
 #include "message.h"
 
-#define CHECK_GET_BYTE (peer->current_receiving_byte >= sizeof(peer->receiving_buffer))
-#define BUF_RECV (char *)&peer->receiving_buffer + peer->current_receiving_byte
+#define CHECK_GET_BYTE (peer->current_receiving_byte >= \
+                                sizeof(peer->receiving_buffer))
+#define BUF_RECV (char *)&peer->receiving_buffer + \
+                                peer->current_receiving_byte
 #define ERNO_CHECK_RECV (errno != EAGAIN || errno != EWOULDBLOCK)
 #define ERNO_CHECK_RECV2 (errno == EAGAIN || errno == EWOULDBLOCK)
 #define ERNO_SEND (errno == EAGAIN || errno == EWOULDBLOCK)
@@ -62,7 +64,8 @@ int delete_peer(peer_t *peer);
 int create_peer(peer_t *peer);
 char *peer_get_addres_str(peer_t *peer);
 int peer_add_to_send(peer_t *peer, message_t *message);
-int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *, peer_t *));
+int receive_from_peer(peer_t *peer, int (*message_handler)(message_t *, \
+                                                    peer_t *));
 int send_to_peer(peer_t *peer);
 
 #endif /* !PEER_H_ */

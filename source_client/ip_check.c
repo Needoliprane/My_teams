@@ -17,8 +17,8 @@ int validate_number(char *str)
             return (0);
         }
         str++;
-   }
-   return (1);
+    }
+    return (1);
 }
 
 int validate_ip(char *ip)
@@ -37,11 +37,11 @@ int validate_ip(char *ip)
         if (num >= 0 && num <= 255) {
             ptr = strtok(NULL, ".");
             if (ptr != NULL)
-               dots++;
+                dots++;
         } else
             return 84;
     }
     if (dots != 3)
-       return 84;
+        return 84;
     return 0;
 }

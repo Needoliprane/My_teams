@@ -15,7 +15,7 @@ int users(peer_t *peer, char **data)
     if (peer->username == NULL) {
         return (84);
     }
-    for(int i = 0; i < MAX_CLIENTS; i++) {
+    for (int i = 0; i < MAX_CLIENTS; i++) {
         if (connection_list[i].username != NULL) {
             tmp = my_strcat(connection_list[i].username, tmp);
             tmp = my_strcat(tmp, " ; ");
