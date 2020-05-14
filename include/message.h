@@ -22,9 +22,9 @@
 #define DATA_MAXSIZE 512
 
 typedef struct {
-  char sender[SENDER_MAXSIZE];
-  char data[DATA_MAXSIZE];
-}  message_t;
+    char sender[SENDER_MAXSIZE];
+    char data[DATA_MAXSIZE];
+} message_t;
 
 int prepare_message(char *sender, char *data, message_t *message);
 int print_message(message_t *message);

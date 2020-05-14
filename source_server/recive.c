@@ -8,8 +8,8 @@
 #include "peer.h"
 #include "server.h"
 
-char const *tabu[] = {"help","login", "users", "user", "send", "messages", "subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
-int (* const command[])(peer_t *, char **data) = {help, login, users, user, send_command, help, help, help, help, use, create, help, help, NULL};
+char const *tabu[] = {"help","login","logout" ,"users", "user", "send", "messages", "subscribe","subscribed","unsubscribe" ,"use" ,"create" ,"list","info", NULL};
+int (* const command[])(peer_t *, char **data) = {help, login, logout, users, user, send_command, help, help, help, help, use, create, help, help, NULL};
 
 int handle_received_message(message_t *message, peer_t *peer)
 {

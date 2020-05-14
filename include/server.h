@@ -54,5 +54,6 @@ int user(peer_t *peer, char **data);
 int create(peer_t *peer, char **data);
 int use(peer_t *peer, char **data);
 int list(peer_t *peer, char **data);
+int logout(peer_t *peer, char **data);
 
 #endif /* !SERVER_H_ */
