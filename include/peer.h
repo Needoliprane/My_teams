@@ -48,6 +48,10 @@ typedef struct {
     char *channel;
     char *channel_description;
     char *thread;
+    char *uuid_user;
+    char *uuid_team;
+    char *uuid_channel;
+    char *uuid_thread;
     char *list_user;
     char *team_description;
     bool use;

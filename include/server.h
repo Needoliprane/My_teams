@@ -43,6 +43,7 @@ int master();
 char **my_str_to_word_array_script(char const *str);
 char *my_strcat(char *buf, char *tmp);
 int send_fast(char *data);
+char *build_uuid();
 
 /* Command */
 int help(peer_t *peer, char **data);

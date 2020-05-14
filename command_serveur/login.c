@@ -5,13 +5,6 @@
 ** login
 */
 
-/*
-** EPITECH PROJECT, 2020
-** 4634731-6917058a9f6437092531794fa022aed8069e4aea
-** File description:
-** recive
-*/
-
 #include "peer.h"
 #include "server.h"
 
@@ -19,6 +12,7 @@ int login(peer_t *peer, char **data)
 {
     if (data && data[1] != NULL) {
         peer->username = strdup(data[1]);
+        peer->uuid_user = build_uuid();
         send_fast("ok !");
         server_event_user_logged_in(peer->username);
         return 0;

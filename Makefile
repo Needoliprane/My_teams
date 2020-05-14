@@ -20,6 +20,7 @@ SRC_LIB =	lib/gnl.c									\
 			lib/delete_peer.c							\
 			lib/get_add_peer.c							\
 			lib/peer_add_to_send.c						\
+			lib/uuid.c									\
 
 SRC_COMMAND_SERVER	=	command_serveur/error.c			\
 						command_serveur/help.c			\
@@ -57,7 +58,7 @@ OBJ_COMMAND_SERV	=	$(SRC_COMMAND_SERVER:.c=.o)
 
 CPPFLAGS=	-I./include
 
-CC	=	gcc -Wall -Wextra -g3 -Wno-unused-parameter
+CC	=	gcc -Wall -Wextra -g3 -Wno-unused-parameter -luuid
 
 RM	=	rm -f
 

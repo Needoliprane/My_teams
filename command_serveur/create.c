@@ -18,14 +18,17 @@ int create(peer_t *peer, char **data)
     } else if (peer->team == NULL) {
         server_event_team_created(data[1], data[1], peer->username);
         peer->team = strdup(data[1]);
+        peer->uuid_team = build_uuid();
         peer->team_description = tmp;
     } else if (peer->channel == NULL) {
         server_event_channel_created(peer->team, data[1], peer->username);
         peer->channel = strdup(data[1]);
+        peer->uuid_channel = build_uuid();
         peer->channel_description = tmp;
     } else if (peer->thread == NULL) {
         server_event_thread_created(peer->channel, data[1], peer->username, tmp);
         peer->thread = strdup(data[1]);
+        peer->uuid_thread = build_uuid();
         peer->message = tmp;
     } else {
         peer->message = my_strcat(peer->message, my_strcat(" ; ", data[1]));
