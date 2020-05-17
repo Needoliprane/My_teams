@@ -31,6 +31,8 @@ int send_to_peer(peer_t *peer)
         }
         len_to_send = sizeof(peer->sending_buffer) - peer->current_sending_byte;
         (len_to_send > MAX_SEND_SIZE) ? len_to_send = MAX_SEND_SIZE : 0;
+        if (len_to_send < 1)
+            return (1);
         send_count = send(peer->socket, SEND_BUFFER, len_to_send, 0);
         if (send_count < 0 && ERNO_SEND_CT)
                 return -1;

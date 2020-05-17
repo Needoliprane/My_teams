@@ -33,6 +33,8 @@ SRC_COMMAND_SERVER	=	command_serveur/error.c			\
 						command_serveur/list.c			\
 						command_serveur/use.c			\
 
+SRC_COMMAND_CLIENT	=	command_client/users.c			\
+
 SRC	=	source_client/client.c							\
 		source_client/ip_check.c						\
 		source_client/main.c							\
@@ -55,6 +57,8 @@ OBJ2	=	$(SRC2:.c=.o)
 
 OBJ_COMMAND_SERV	=	$(SRC_COMMAND_SERVER:.c=.o)
 
+OBJ_COMMAND_CLIENT	=	$(SRC_COMMAND_CLIENT:.c=.o)
+
 CPPFLAGS=	-I./include
 
 CC	=	gcc -Wall -Wextra -g3 -Wno-unused-parameter -luuid
@@ -63,7 +67,7 @@ RM	=	rm -f
 
 all:	nm	objdump
 
-nm:	$(OBJ) $(OBJ_LIB)
+nm:	$(OBJ) $(OBJ_LIB) $(OBJ_COMMAND_CLIENT)
 	cp libs/myteams/libmyteams.so . && $(CC) -g3 $(OBJ) $(OBJ_LIB) -o $(NAME) -L$(PWD)/ -lmyteams
 
 objdump:	$(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV)

@@ -50,4 +50,6 @@ char *my_strcat(char *buf, char *tmp);
 
 extern peer_t server;
 
+int users(char *answer);
+
 #endif /* !CLIENT_H_ */

@@ -11,7 +11,7 @@
 int is_logout(message_t *message)
 {
     if (strncmp(message->data, "/logout", strlen("/logout")) == 0) {
-        exit(0);
+        client_event_loggedout("str", command.username);
     }
     return (0);
 }
@@ -26,6 +26,7 @@ int update_client(char *str)
     data = my_str_to_word_array_script(str);
     if (strncmp(str, "/login", strlen("/login")) == 0) {
         (command.username == NULL) ? command.username = strdup(data[1]) : 0;
+        client_event_loggedin("str", command.username);
         return (0);
     }
     if (strncmp(str, "/user", strlen("/user")) == 0)
