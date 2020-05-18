@@ -10,6 +10,6 @@
 
 int help(peer_t *peer, char **data)
 {
-    send_fast("ok !");
+    send_fast("Ok !");
     return 0;
 }

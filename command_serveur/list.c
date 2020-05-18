@@ -29,15 +29,15 @@ int list(peer_t *peer, char **data)
 
 static int list_teams(peer_t *pper, char **data)
 {
-    char *tmp = "";
+    char *tmp = "\"";
 
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (connection_list[i].team != NULL) {
-            tmp = my_strcat(connection_list[i].team, tmp);
-            tmp = my_strcat(tmp, " ; ");
+            tmp = my_strcat(tmp, connection_list[i].team);
+            tmp = my_strcat(tmp, "\" ; \"");
         }
     }
-    send_fast(my_strcat("Ok ! ", tmp));
+    send_fast(my_strcat("Ok ! ", my_strcat(tmp, "\"")));
     return (0);
 }
 
@@ -45,7 +45,7 @@ static int list_channel(peer_t *pper, char **data)
 {
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (strcmp(connection_list[i].team, data[1]) == 0) {
-            send_fast(my_strcat("Ok ! ", connection_list[i].channel));
+            send_fast(my_strcat("Ok ! \"", my_strcat(connection_list[i].channel, "\"")));
             return (0);
         }
     }
@@ -56,7 +56,7 @@ static int list_thread(peer_t *pper, char **data)
 {
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (strcmp(connection_list[i].channel, data[1]) == 0) {
-            send_fast(my_strcat("Ok ! ", connection_list[i].thread));
+            send_fast(my_strcat("Ok ! \"", my_strcat(connection_list[i].thread, "\"")));
             return (0);
         }
     }
@@ -67,7 +67,7 @@ static int list_replies(peer_t *pper, char **data)
 {
     for (int i = 0; i < MAX_CLIENTS; i++) {
         if (strcmp(connection_list[i].channel, data[1]) == 0) {
-            send_fast(my_strcat("Ok ! ", connection_list[i].message));
+            send_fast(my_strcat("Ok ! ", my_strcat("\"", my_strcat(connection_list[i].message, "\""))));
             return (0);
         }
     }

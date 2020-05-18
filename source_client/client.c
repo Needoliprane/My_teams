@@ -38,12 +38,13 @@ int master(char **av)
 {
     int value = 0;
 
+    server.uuid_user = build_uuid();
     for (fd_set read_fds, write_fds, except_fds; 1 ;) {
         build_fd_sets(&server, &read_fds, &write_fds, &except_fds);
         value = select(server.socket + 1, &read_fds, &write_fds, \
             &except_fds, NULL);
         for_the_norm(value, av, &read_fds, &write_fds, &except_fds);
-        printf("waiting for server or stdin activity. Something to send:\n");
+        printf("waiting for server or stdin activity:\n");
     }
     return 0;
 }

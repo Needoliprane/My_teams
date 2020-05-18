@@ -22,11 +22,8 @@ int login(peer_t *peer, char **data)
 
 int logout(peer_t *peer, char **data)
 {
-    if (data && data[1] != NULL) {
-        peer->username = strdup(data[1]);
-        send_fast("ok !");
-        server_event_user_logged_out(peer->username);
-        return 0;
-    }
-    return 84;
+    send_fast("ok !");
+    server_event_user_logged_out(peer->username);
+    free(peer->username);
+    peer->username = NULL;
 }

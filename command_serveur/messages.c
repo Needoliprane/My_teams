@@ -26,6 +26,6 @@ int messages(peer_t *peer, char **data)
             }
         }
     }
-    send_fast(my_strcat("ok ! ", tmp));
+    send_fast(my_strcat("ok ! \"", my_strcat(tmp, "\"")));
     return (control);
 }

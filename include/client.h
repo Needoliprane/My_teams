@@ -47,9 +47,11 @@ int master(char **av);
 int build_fd_sets(peer_t *server, fd_set *read_fds, fd_set *write_fds, fd_set *except_fds);
 char **my_str_to_word_array_script(char const *str);
 char *my_strcat(char *buf, char *tmp);
+char *build_uuid();
 
 extern peer_t server;
 
-int users(char *answer);
+int print_users(char *answer);
+int print_teams(char *answer);
 
 #endif /* !CLIENT_H_ */
