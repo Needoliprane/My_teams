@@ -68,10 +68,10 @@ RM	=	rm -f
 all:	nm	objdump
 
 nm:	$(OBJ) $(OBJ_LIB) $(OBJ_COMMAND_CLIENT)
-	$(CC) -g3 $(OBJ) $(OBJ_LIB) -o $(NAME) -L$(PWD)/libs/myteams/ -lmyteams
+	$(CC) -g3 $(OBJ) $(OBJ_LIB) -o $(NAME) -L./libs/myteams/ -lmyteams
 
 objdump:	$(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV)
-	$(CC) -g3 $(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV) -o $(NAME2) -L$(PWD)/libs/myteams/ -lmyteams
+	$(CC) -g3 $(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV) -o $(NAME2) -L./libs/myteams/ -lmyteams
 
 clean:
 	$(RM) $(OBJ) $(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV) libmyteams.so $(OBJ_COMMAND_CLIENT)
