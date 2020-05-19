@@ -39,7 +39,7 @@ char **my_str_to_word_array_script(char const *str)
 
     for (int i = 0; str[i]; (str[i] == '[') ? count++ : 0, i++);
     tab = malloc(sizeof(char *) * (count + 2));
-    tab[0] = calloc(strlen(str), sizeof(char));
+    tab[0] = calloc(strlen(str) + 1, sizeof(char));
     for (int i = 0; str[i] && str[i] != ' '; tab[0][i] = str[i], tab[0][i + 1] = 0, i++);
     extract_between_quotes(str, tab);
     tab[count + 1] = NULL;

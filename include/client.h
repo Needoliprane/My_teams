@@ -48,6 +48,7 @@ int build_fd_sets(peer_t *server, fd_set *read_fds, fd_set *write_fds, fd_set *e
 char **my_str_to_word_array_script(char const *str);
 char *my_strcat(char *buf, char *tmp);
 char *build_uuid();
+char **my_str_to_word_array(char const *str);
 
 extern peer_t server;
 

@@ -13,6 +13,7 @@ SRC_LIB =	lib/gnl.c									\
 			lib/message.c								\
 			lib/queue.c									\
 			lib/my_str_to_word_array_shell.c			\
+			lib/word_array.c							\
 			lib/strcat.c								\
 			lib/receive_peer.c							\
 			lib/send_peer.c								\
@@ -68,7 +69,7 @@ RM	=	rm -f
 all:	nm	objdump
 
 nm:	$(OBJ) $(OBJ_LIB) $(OBJ_COMMAND_CLIENT)
-	$(CC) -g3 $(OBJ) $(OBJ_LIB) -o $(NAME) -L./libs/myteams/ -lmyteams
+	$(CC) -g3 $(OBJ) $(OBJ_LIB) $(OBJ_COMMAND_CLIENT) -o $(NAME) -L./libs/myteams/ -lmyteams
 
 objdump:	$(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV)
 	$(CC) -g3 $(OBJ2) $(OBJ_LIB) $(OBJ_COMMAND_SERV) -o $(NAME2) -L./libs/myteams/ -lmyteams

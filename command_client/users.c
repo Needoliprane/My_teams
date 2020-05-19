@@ -9,10 +9,10 @@
 
 int print_users(char *answer)
 {
-    char **data = my_str_to_word_array_script((char *const)answer);
+    char **data = my_str_to_word_array((char *const)answer);
 
-    for (int i = 1; data[i]; i++) {
-        client_print_users(server.uuid_user, data[i], 0);
+    for (int i = 1; data[i]; i += 2) {
+        client_print_users(data[i + 1], data[i], 1);
     }
     return (0);
 }
