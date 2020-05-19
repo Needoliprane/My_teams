@@ -26,4 +26,5 @@ int logout(peer_t *peer, char **data)
     server_event_user_logged_out(peer->username);
     free(peer->username);
     peer->username = NULL;
+    return (0);
 }
