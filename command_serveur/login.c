@@ -11,7 +11,7 @@
 int login(peer_t *peer, char **data)
 {
     if (data && data[1] != NULL) {
-        peer->username = strdup(data[1]);
+        peer->username = strdup(data[2]);
         peer->uuid_user = build_uuid();
         send_fast("ok !");
         server_event_user_logged_in(peer->username);

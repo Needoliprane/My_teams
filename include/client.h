@@ -25,6 +25,7 @@
 
 typedef struct client_command_s {
     char *username;
+    char *uuid_user;
     char *team_name;
     char *channel_name;
     char *thread_name;

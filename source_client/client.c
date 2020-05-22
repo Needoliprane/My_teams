@@ -44,7 +44,6 @@ int master(char **av)
         value = select(server.socket + 1, &read_fds, &write_fds, \
             &except_fds, NULL);
         for_the_norm(value, av, &read_fds, &write_fds, &except_fds);
-        printf("waiting for server or stdin activity:\n");
     }
     return 0;
 }

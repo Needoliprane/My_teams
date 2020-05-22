@@ -32,11 +32,7 @@ int send_fast(char *data)
     prepare_message("Server", data, &new_message);
     for (int i = 0; i < MAX_CLIENTS; ++i) {
         if (connection_list[i].socket != NO_SOCKET) {
-            if (peer_add_to_send(&connection_list[i], &new_message) != 0) {
-                printf("Send buffer was overflowed, we lost this message!\n");
-                continue;
-            }
-            printf("New message to send was enqueued right now.\n");
+            peer_add_to_send(&connection_list[i], &new_message);
         }
     }
     return (0);

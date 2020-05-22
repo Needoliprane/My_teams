@@ -81,15 +81,12 @@ int handle_read_from_stdin(peer_t *server, char *client_name)
         printf("Error invalid syntax or invalid command\n");
         return (0);
     }
-    // is_logout(&nw_msg);
     if (update_client(nw_msg.data) == 1) {
         msg = my_strcat(nw_msg.data, dump_command());
-        printf("VIP : %s\n", msg);
     } else {
         msg = strdup(nw_msg.data);
-        printf("Non VIP : %s\n", msg);
     }
-    strcpy(nw_msg.data, msg);
+    strcpy(nw_msg.data, my_strcat(msg, my_strcat("[\"", my_strcat(server->uuid_user, "\"]"))));
     print_message(&nw_msg);
     if (peer_add_to_send(server, &nw_msg) != 0) {
         return 0;

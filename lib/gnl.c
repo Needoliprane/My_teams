@@ -38,6 +38,5 @@ int read_from_stdin(char *read_buffer, size_t max_len)
     } while (read_count > 0);
     if (strlen(read_buffer) > 0 && read_buffer[strlen(read_buffer) - 1] == '\n')
         read_buffer[strlen(read_buffer) - 1] = '\0';
-    printf("Read from stdin %zu bytes. Let's prepare message to send.\n", strlen(read_buffer));
     return 0;
 }

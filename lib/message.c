@@ -29,10 +29,8 @@ int validate_message_client(message_t *message)
     if (message->data == NULL) {
         return (84);
     }
-    printf("validate %s\n", message->data);
     if (message->data[0] != '/')
         return (84);
-    printf("here\n");
     for (int i = 0; tab[i]; i++) {
         if (strncmp(message->data, tab[i], strlen(tab[i])) == 0) {
             return (0);
